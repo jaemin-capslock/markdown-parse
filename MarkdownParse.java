@@ -18,12 +18,16 @@ public class MarkdownParse {
             int closeParen = markdown.indexOf(")", nextCloseBracket);
             
             
+            
             // System.out.println(currentIndex);
             if (currentIndex > closeParen) break;
             else if (currentIndex < closeParen){
                 currentIndex = closeParen + 1;
             }
-            toReturn.add(markdown.substring(nextCloseBracket + 2, closeParen));
+            if (markdown.substring(nextCloseBracket + 2, closeParen).contains(" ") == false){
+                toReturn.add(markdown.substring(nextCloseBracket + 2, closeParen));
+            }
+            
         }
         return toReturn;
     }
