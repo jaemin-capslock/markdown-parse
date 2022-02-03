@@ -152,4 +152,12 @@ public class MarkdownParseTest{
         assertEquals(1, 1);
 
     }
+    @Test
+    public void testOwnFive() throws IOException {
+        Path file = Path.of("test-file-5.md");
+        String contents = Files.readString(file);
+
+        List<String> expected = List.of("inside");
+        assertEquals(MarkdownParse.getLinks(contents), expected);
+    }
 }

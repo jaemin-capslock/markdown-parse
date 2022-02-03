@@ -30,8 +30,9 @@ public class MarkdownParse {
                   //  System.out.println("Exclamation mark detected");
                     continue;
                 }
+                
             }
-
+            
             int markdownCheck = nextCloseBracket + 1;
             if(markdownCheck>=markdown.length()){
                 break;
@@ -43,6 +44,13 @@ public class MarkdownParse {
 
                 if((openParen == -1) || (closeParen == -1)) {
                     break;
+                }
+                String toAdd = markdown.substring(openParen + 1, closeParen);
+                if (!toAdd.contains(" ")) {
+                    toReturn.add(toAdd);
+                    currentIndex = closeParen + 1;
+                } else {
+                    currentIndex = openParen + 1;
                 }
 
                 toReturn.add(markdown.substring(openParen + 1, closeParen));
